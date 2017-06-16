@@ -1,1 +1,1 @@
-# vinted-homework-app
+# vinted homework app
