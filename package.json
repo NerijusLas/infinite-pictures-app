@@ -11,6 +11,7 @@
     "start": "node_modules/.bin/webpack-dev-server"
   },
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "immutable": "^3.8.1",
     "package": "^1.0.1",
     "react": "^15.4.2",

@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PictureListPure = ({ pictures }) => (
-  <div>
-    {pictures.map(picture => (
-      <div key={picture.id}>{picture.name}</div>
-    ))}
-  </div>
-)
+class PictureListPure extends React.Component {
+  componentDidMount() {
+    this.props.loadPictures();
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.pictures.map(picture => (
+          <div key={picture.id}>{picture.name}</div>
+        ))}
+      </div>
+    )
+  }
+}
 
 PictureListPure.propTypes = {
   pictures: PropTypes.arrayOf(
@@ -15,7 +23,9 @@ PictureListPure.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  loading: PropTypes.bool.isRequired,
+  loadPictures: PropTypes.func.isRequired
 }
 
 export default PictureListPure;

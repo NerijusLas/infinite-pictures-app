@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux-immutable';
 import pictures from './pictures';
 
-const picturesApp = combineReducers({
+const reducers = combineReducers({
   picturesReducer: pictures
 })
 
-export default picturesApp;
+export default reducers;

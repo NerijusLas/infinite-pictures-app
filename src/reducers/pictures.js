@@ -10,6 +10,8 @@ const pictures = (state = initialState(), action) => {
     case 'TOGGGLE_LOADING':
       state.set('loading', action.loading);
       return state;
+    case 'LOAD_PICTURES_SUCCEEDED':
+      return state.set('pictures', action.pictures);
     default:
       return state;
   }
