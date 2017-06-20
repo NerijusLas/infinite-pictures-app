@@ -1,8 +1,11 @@
 import React from 'react';
+import PictureList from './containers/PictureList'
 
 class App extends React.Component {
     render() {
-        return <div>Labuka</div>
+        return (
+            <PictureList />
+        );
     }
 }
 
