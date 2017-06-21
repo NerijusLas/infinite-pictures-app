@@ -7,10 +7,16 @@ class PictureListPure extends React.Component {
   }
 
   render() {
+    let errorMessage = "";
+    if (this.props.error) {
+      errorMessage = this.props.error;
+    }
+
     return (
       <div>
+        <div>{errorMessage}</div>
         {this.props.pictures.map(picture => (
-          <div key={picture.id}>{picture.name}</div>
+          <div key={picture.id}>{picture.title}</div>
         ))}
       </div>
     )
@@ -21,11 +27,12 @@ PictureListPure.propTypes = {
   pictures: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired
+      title: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
   loading: PropTypes.bool.isRequired,
-  loadPictures: PropTypes.func.isRequired
+  loadPictures: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired
 }
 
 export default PictureListPure;

@@ -13,7 +13,8 @@
   ],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "env": {
-    "browser": true
+    "browser": true,
+    "es6": true
   },
   "rules": {
       "no-console": "off"

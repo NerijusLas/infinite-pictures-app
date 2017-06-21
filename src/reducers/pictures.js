@@ -2,7 +2,8 @@ import { Record } from 'immutable';
 
 const initialState = Record({
   pictures: [],
-  loading: false
+  loading: false,
+  error: ""
 });
 
 const pictures = (state = initialState(), action) => {
@@ -12,6 +13,8 @@ const pictures = (state = initialState(), action) => {
       return state;
     case 'LOAD_PICTURES_SUCCEEDED':
       return state.set('pictures', action.pictures);
+    case 'LOAD_PICTURES_FAILED':
+      return state.set('error', action.message);
     default:
       return state;
   }

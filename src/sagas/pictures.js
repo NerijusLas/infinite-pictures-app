@@ -1,22 +1,19 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, put, call } from 'redux-saga/effects';
+import dribbbleApi from '../api';
 
 function* picturesSaga() {
   yield takeLatest("LOAD_PICTURES", loadPictures);
 }
 
 function* loadPictures() {
+
     
-    const pictures = [
-        {
-            name: "Labas",
-            id: 1
-        },
-        {
-            name: "Labukas",
-            id: 2
-        }
-    ];
-    yield put({type: "LOAD_PICTURES_SUCCEEDED", pictures});
+    try {
+      const pictures = yield call(dribbbleApi.fetchShots);
+      yield put({type: "LOAD_PICTURES_SUCCEEDED", pictures});
+   } catch (e) {
+      yield put({type: "LOAD_PICTURES_FAILED", message: e.message});
+   }
 }
 
 export default picturesSaga;

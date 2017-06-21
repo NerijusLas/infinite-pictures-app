@@ -4,7 +4,8 @@ import PictureListPure from '../components/PictureListPure';
 
 const mapStateToProps = (state) => ({
   pictures: state.get('picturesReducer').get('pictures'),
-  loading: state.get('picturesReducer').get('loading')
+  loading: state.get('picturesReducer').get('loading'),
+  error: state.get('picturesReducer').get('error')
 })
 
 const mapDispatchToProps = (dispatch) => ({
