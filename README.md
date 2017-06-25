@@ -1,4 +1,6 @@
-# Dribbble shots scroller
+# Infinite Pictures
+
+Another time killer app when you are bored or have nothing to do.
 
 ## Getting Started
 
