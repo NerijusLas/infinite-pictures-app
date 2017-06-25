@@ -27,6 +27,8 @@ Run the application
 yarn start
 ```
 
+The app will be running on http://localhost:9000/
+
 ## Authors
 
 * **Renat Zaicev**
