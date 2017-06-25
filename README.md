@@ -13,16 +13,16 @@ To run this app you should have nodejs and yarn installed. You can install yarn 
 choco install yarn
 ```
 
-### Installing
+### Installing the application
 
+Install dependencies of the project
+```
+yarn
+```
+
+Run the application
 ```
 yarn start
-```
-
-## Running the tests
-
-```
-yarn test
 ```
 
 ## Authors
