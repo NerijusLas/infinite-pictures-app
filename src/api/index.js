@@ -2,9 +2,9 @@ export const DRIBBBLE_ACCESS_TOKEN = "df0850f5aa9c779310e256750379975824fc3c9a31
 export const DRIBBBLE_API_URL = "https://api.dribbble.com/v1";
 
 const dribbbleApi = {
-  fetchShots () {
+  fetchShots (page) {
     return (
-        fetch(DRIBBBLE_API_URL + '/shots', {
+        fetch(DRIBBBLE_API_URL + '/shots?per_page=24&page=' + page, {
         method  : 'GET',
         headers : {
             'Authorization': 'Bearer ' + DRIBBBLE_ACCESS_TOKEN,

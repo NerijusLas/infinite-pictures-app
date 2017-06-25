@@ -5,11 +5,12 @@ import PictureListPure from '../components/PictureListPure';
 const mapStateToProps = (state) => ({
   pictures: state.get('picturesReducer').get('pictures'),
   loading: state.get('picturesReducer').get('loading'),
-  error: state.get('picturesReducer').get('error')
+  error: state.get('picturesReducer').get('error'),
+  lastPage: state.get('picturesReducer').get('lastPage')
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  loadPictures: () => dispatch(loadPictures())
+  loadPictures: (page) => dispatch(loadPictures(page))
 })
 
 const PictureList = connect(

@@ -1,5 +1,6 @@
-export const loadPictures = () => ({
-  type: 'LOAD_PICTURES'
+export const loadPictures = (page) => ({
+  type: 'LOAD_PICTURES',
+  page
 });
 
 export const loadPicturesSuccess = (pictures) => ({
