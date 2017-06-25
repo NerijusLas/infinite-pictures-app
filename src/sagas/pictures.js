@@ -6,14 +6,12 @@ function* picturesSaga() {
 }
 
 function* loadPictures() {
-
-    
     try {
-      const pictures = yield call(dribbbleApi.fetchShots);
-      yield put({type: "LOAD_PICTURES_SUCCEEDED", pictures});
-   } catch (e) {
-      yield put({type: "LOAD_PICTURES_FAILED", message: e.message});
-   }
+        const pictures = yield call(dribbbleApi.fetchShots);
+        yield put({type: "LOAD_PICTURES_SUCCEEDED", pictures});
+    } catch (e) {
+        yield put({type: "LOAD_PICTURES_FAILED", message: e.message});
+    }
 }
 
 export default picturesSaga;

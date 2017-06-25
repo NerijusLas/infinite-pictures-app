@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Radium from 'radium';
+import PicturePure from './PicturePure';
 
 class PictureListPure extends React.Component {
   componentDidMount() {
@@ -13,10 +15,10 @@ class PictureListPure extends React.Component {
     }
 
     return (
-      <div>
+      <div style={styles.mainContainer}>
         <div>{errorMessage}</div>
         {this.props.pictures.map(picture => (
-          <div key={picture.id}>{picture.title}</div>
+          <PicturePure key={picture.id} picture={picture} />
         ))}
       </div>
     )
@@ -27,7 +29,13 @@ PictureListPure.propTypes = {
   pictures: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired
+      title: PropTypes.string.isRequired,
+      user: PropTypes.shape({
+        name: PropTypes.string.isRequired
+      }).isRequired,
+      images: PropTypes.shape({
+        normal: PropTypes.string.isRequired
+      }).isRequired
     }).isRequired
   ).isRequired,
   loading: PropTypes.bool.isRequired,
@@ -35,4 +43,12 @@ PictureListPure.propTypes = {
   error: PropTypes.string.isRequired
 }
 
-export default PictureListPure;
+var styles = {
+  mainContainer: {
+    backgroundColor: '#e6e6e6',
+    width: '100%',
+    height: '100%'
+  }
+};
+
+export default Radium(PictureListPure);
