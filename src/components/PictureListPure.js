@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Radium from 'radium';
 import PicturePure from './PicturePure';
 
 class PictureListPure extends React.Component {
@@ -36,7 +35,7 @@ class PictureListPure extends React.Component {
     }
 
     return (
-      <div style={styles.mainContainer}>
+      <div>
         <div>{errorMessage}</div>
         {this.props.pictures.map(picture => (
           <PicturePure key={picture.id} picture={picture} favouritePicture={this.props.favouritePicture} />
@@ -62,12 +61,4 @@ PictureListPure.propTypes = {
   favouritePicture: PropTypes.func.isRequired
 }
 
-var styles = {
-  mainContainer: {
-    backgroundColor: '#e6e6e6',
-    width: '100%',
-    height: '100%'
-  }
-};
-
-export default Radium(PictureListPure);
+export default PictureListPure;
