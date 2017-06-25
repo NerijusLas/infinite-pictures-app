@@ -8,7 +8,7 @@ export const loadPicturesSuccess = (pictures) => ({
   pictures
 });
 
-export const toggleLoading = (loading) => ({
-  type: 'TOGGLE_LOADING',
-  loading
+export const favouritePicture = (id) => ({
+  type: 'FAVOURITE_PICTURE',
+  id
 });

@@ -7,10 +7,14 @@ class PicturePure extends React.Component {
   render() {
     return (
       <div key={this.props.picture.id} style={styles.imageContainer}>
-        <div style={[styles.text, Radium.getState(this.state, this.props.picture.id, ':hover') ? styles.visible : styles.hidden]}>
-          <PictureContentPure picture={this.props.picture} />
+        <div style={[
+          styles.text, 
+          Radium.getState(this.state, this.props.picture.id, ':hover') || this.props.picture.favourite
+            ? styles.visible 
+            : styles.hidden]}>
+          <PictureContentPure picture={this.props.picture} favouritePicture={this.props.favouritePicture} />
         </div>
-        <img style={styles.image} src={this.props.picture.images.normal} alt="" />
+        <img style={styles.image} src={this.props.picture.image} alt="" />
       </div>
     )
   }
@@ -20,13 +24,11 @@ PicturePure.propTypes = {
   picture: PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      user: PropTypes.shape({
-        name: PropTypes.string.isRequired
-      }).isRequired,
-      images: PropTypes.shape({
-        normal: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired
+      author: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      favourite: PropTypes.bool.isRequired
+    }).isRequired,
+  favouritePicture: PropTypes.func.isRequired
 }
 
 var styles = {

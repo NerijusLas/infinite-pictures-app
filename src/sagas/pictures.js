@@ -7,7 +7,19 @@ function* picturesSaga() {
 
 function* loadPictures(data) {
     try {
-        const pictures = yield call(dribbbleApi.fetchShots, data.page);
+        const picturesPayload = yield call(dribbbleApi.fetchShots, data.page);
+
+        const pictures = picturesPayload.map(function(pic) { 
+            var reformated = {
+                id: pic.id,
+                title: pic.title,
+                author: pic.user.name,
+                image: pic.images.normal,
+                favourite: false
+            };
+            return reformated;
+        });
+
         yield put({type: "LOAD_PICTURES_SUCCEEDED", pictures});
     } catch (e) {
         yield put({type: "LOAD_PICTURES_FAILED", message: e.message});

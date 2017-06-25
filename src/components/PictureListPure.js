@@ -39,7 +39,7 @@ class PictureListPure extends React.Component {
       <div style={styles.mainContainer}>
         <div>{errorMessage}</div>
         {this.props.pictures.map(picture => (
-          <PicturePure key={picture.id} picture={picture} />
+          <PicturePure key={picture.id} picture={picture} favouritePicture={this.props.favouritePicture} />
         ))}
       </div>
     )
@@ -51,18 +51,15 @@ PictureListPure.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      user: PropTypes.shape({
-        name: PropTypes.string.isRequired
-      }).isRequired,
-      images: PropTypes.shape({
-        normal: PropTypes.string.isRequired
-      }).isRequired
+      author: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      favourite: PropTypes.bool.isRequired
     }).isRequired
   ).isRequired,
-  loading: PropTypes.bool.isRequired,
   loadPictures: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
-  lastPage: PropTypes.number.isRequired
+  lastPage: PropTypes.number.isRequired,
+  favouritePicture: PropTypes.func.isRequired
 }
 
 var styles = {

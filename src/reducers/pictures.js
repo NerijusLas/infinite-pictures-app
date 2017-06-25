@@ -2,7 +2,6 @@ import { Record } from 'immutable';
 
 const initialState = Record({
   pictures: [],
-  loading: false,
   lastPage: 1,
   error: ""
 });
@@ -16,15 +15,27 @@ function loadPicturesSuccess(state, pictures) {
     .set('lastPage', lastPage);
 }
 
+function loadPictureFailed(state, message) {
+  return state.set('error', message);
+}
+
+function favouritePicture(state, id) {
+  var pictures = state.get('pictures').slice();
+  pictures = pictures.map(pic => pic.id === id
+    ? Object.assign({}, pic, {favourite: !pic.favourite})
+    : pic
+    );
+  return state.set('pictures', pictures);
+}
+
 const pictures = (state = initialState(), action) => {
   switch (action.type) {
-    case 'TOGGGLE_LOADING':
-      state.set('loading', action.loading);
-      return state;
     case 'LOAD_PICTURES_SUCCEEDED':
       return loadPicturesSuccess(state, action.pictures);
     case 'LOAD_PICTURES_FAILED':
-      return state.set('error', action.message);
+      return loadPictureFailed(state, action.message);
+    case 'FAVOURITE_PICTURE':
+      return favouritePicture(state, action.id);
     default:
       return state;
   }

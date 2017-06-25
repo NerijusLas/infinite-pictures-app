@@ -3,13 +3,26 @@ import PropTypes from 'prop-types';
 import Radium from 'radium';
 
 class PictureContentPure extends React.Component {
+  constructor(props) {
+      super(props);
+      this.onFavouriteClick = this.onFavouriteClick.bind(this);
+   }
+
+  onFavouriteClick() {
+    this.props.favouritePicture(this.props.picture.id);
+  }
+
   render() {
     return (
       <div>
         <div style={styles.title}>{this.props.picture.title}</div>
         <div style={styles.lineSeparator}></div>
-        <div style={styles.author}>{this.props.picture.user.name}</div>
-        <button style={styles.favouriteButton}>Favourite</button>
+        <div style={styles.author}>{this.props.picture.author}</div>
+        <button 
+          style={styles.favouriteButton} 
+          onClick={this.onFavouriteClick}>
+          Favourite
+        </button>
       </div>
     )
   }
@@ -17,11 +30,13 @@ class PictureContentPure extends React.Component {
 
 PictureContentPure.propTypes = {
   picture: PropTypes.shape({
+      id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      user: PropTypes.shape({
-        name: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired
+      author: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      favourite: PropTypes.bool.isRequired
+    }).isRequired,
+  favouritePicture: PropTypes.func.isRequired
 }
 
 var styles = {
